@@ -1,0 +1,17 @@
+{
+  "name": "dsh-provider-context",
+  "version": "1.0.0",
+  "description": "按提供商统一设置所有模型的上下文容量，支持 Web 插件设置和本地 YAML。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": { ".": "./lib/index.js", "./client": "./client.js", "./package.json": "./package.json" },
+  "files": ["lib", "client.js", "cordis.patch.yml", "README.md"],
+  "scripts": { "test": "node --test test/*.test.js" },
+  "dependencies": { "@deepseek-ai/schemastery": "3.18.4" },
+  "peerDependencies": { "@deepseek-ai/dsh-llm": "0.1.7-rc.2" },
+  "engines": { "node": ">=22" },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
+    "client": { "platform": "web", "inject": ["@deepseek-ai/dsh-client-ui-settings", "@deepseek-ai/dsh-client-ui-settings-plugins"] }
+  }
+}
